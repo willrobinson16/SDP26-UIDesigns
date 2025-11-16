@@ -45,13 +45,7 @@ struct HeroesView: View {
         
                 ToolbarItem(placement: .topBarTrailing) {
                     Menu("Filtros", systemImage: "line.3.horizontal") {
-                        // TODO - Añadir más filtros
-                        //                        Button("Orden ascendente") {
-                        //                            SUPERHEROES.sorted { $0.apodo > $1.apodo }
-                        //                        }
-                        //                        Button("Orden descendente") {
-                        //                            SUPERHEROES.sorted { $0.apodo < $1.apodo }
-                        //                        }
+                        /// TODO - Añadir más filtros
                         Button("Favoritos") {
                             favoritesFilter = true
                         }

@@ -14,6 +14,9 @@ struct ContentView: View {
                 NavigationLink(destination: MusicPlayer()) {
                     Text("Music Player")
                 }
+                NavigationLink(destination: WeatherView()) {
+                    Text("Weather")
+                }
                 NavigationLink(destination: HeroesView()) {
                     Text("SuperHeroes")
                 }

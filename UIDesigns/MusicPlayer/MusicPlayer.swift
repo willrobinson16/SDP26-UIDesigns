@@ -9,7 +9,7 @@ struct MusicPlayer: View {
     private var elapsedSeconds: Int {
         Int(Double(songDuration) * songPosition)
     }
-
+    
     private var remainingSeconds: Int {
         max(Int(songDuration) - elapsedSeconds, 0)
     }
@@ -73,23 +73,26 @@ struct MusicPlayer: View {
                 
                 // Navegación
                 HStack(alignment: .center) {
-                    NavigatePlayerButton(textButton: "Explorar")
-                    NavigatePlayerButton(textButton: "Música")
-                    NavigatePlayerButton(textButton: "Listas")
+                    Button("Explorar") { }
+                        .buttonStyle(.navigatePlayerButton)
                     
+                    Button("Música") { }
+                        .buttonStyle(.navigatePlayerButton)
+                    
+                    Button("Listas") { }
+                        .buttonStyle(.navigatePlayerButton)
                 }
                 .padding(.bottom)
-    
+                
                 // Controles
                 HStack(alignment: .center, spacing: 20) {
+                    
                     // Backward
-                    Button {
-                        
-                    } label: {
+                    Button { } label: {
                         Image(systemName: "backward.fill")
                     }
                     .buttonStyle(.playerButton)
-
+                    
                     // Play
                     Button {
                         isPlaying.toggle()
