@@ -21,6 +21,7 @@ struct WeatherView: View {
                     VStack {
                         TodayView()
                         ScrollDay(weatherData: sampleWeatherData)
+                        WeekView()
                     }
                     .shadow(radius: 2)
                     .padding()
@@ -29,7 +30,6 @@ struct WeatherView: View {
             .padding()
             .foregroundStyle(.white)
         }
-        .safeAreaPadding()
     }
 }
 

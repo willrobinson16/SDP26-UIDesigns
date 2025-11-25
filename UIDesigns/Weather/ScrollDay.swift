@@ -17,12 +17,12 @@ struct ScrollDay: View {
             .overlay {
                 ScrollView(.horizontal) {
                     HStack(alignment: .center, spacing: 25) {
-                        ForEach(sampleWeatherData) { weather in
+                        ForEach(weatherData) { weather in
                             VStack(alignment: .center, spacing: 15) {
                                 Text(weather.day)
                                     .bold()
                                 Image(systemName: weather.icon)
-                                    .foregroundStyle(.blue)
+                                    .applySymbolPalette(weather.iconColor.palette)
                                     .font(.title2)
                                     .frame(width: 30, height: 30)
                                 Text(weather.temperature)
@@ -40,4 +40,20 @@ struct ScrollDay: View {
 
 #Preview {
     ScrollDay(weatherData: sampleWeatherData)
+}
+
+private extension View {
+    @ViewBuilder
+    func applySymbolPalette(_ colors: [Color]) -> some View {
+        switch colors.count {
+        case 0:
+            self
+        case 1:
+            self.foregroundStyle(colors[0])
+        case 2:
+            self.foregroundStyle(colors[0], colors[1])
+        default:
+            self.foregroundStyle(colors[0], colors[1], colors[2])
+        }
+    }
 }

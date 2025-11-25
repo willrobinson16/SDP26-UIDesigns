@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var heroes: [SuperHero] = SUPERHEROES
+    
     var body: some View {
         NavigationStack {
             List {
@@ -17,11 +19,16 @@ struct ContentView: View {
                 NavigationLink(destination: WeatherView()) {
                     Text("Weather")
                 }
-                NavigationLink(destination: HeroesView()) {
+                NavigationLink(destination: HeroesView(heroes: $heroes)) {
                     Text("SuperHeroes")
                 }
             }
             .navigationTitle("Apps")
+            .navigationDestination(for: SuperHero.self) { superhero in
+                if let index = heroes.firstIndex(where: { $0.id == superhero.id }) {
+                    SuperHeroDetail(superhero: heroes[index], isFavorite: $heroes[index].isFavorite)
+                }
+            }
         }
     }
 }

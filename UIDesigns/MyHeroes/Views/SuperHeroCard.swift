@@ -15,23 +15,21 @@ struct SuperHeroCard: View {
             Image(superhero.imagen)
                 .resizable()
                 .scaledToFit()
-                .frame(maxWidth: .infinity)
-                .clipShape(.rect(corners: .concentric, isUniform: true))
-            Text(superhero.apodo)
-                .font(.footnote)
-                .bold()
-                .lineLimit(1)
-                .foregroundStyle(.white)
-                
-            Text(superhero.nombreReal)
-                .font(.caption2)
-                .padding(.bottom, 5)
-                .lineLimit(1)
-                .foregroundStyle(.white)
+                .clipShape(.rect(cornerRadius: 10))
+            VStack {
+                Text(superhero.apodo)
+                    .font(.subheadline)
+                    .bold()
+                    .lineLimit(1)
+                    
+                Text(superhero.nombreReal)
+                    .font(.caption)
+                    .padding(.bottom, 5)
+                    .lineLimit(1)
+            }
+            .frame(width: 100)
         }
-        .padding(8)
-        .background(superhero.tipo.color.opacity(0.5))
-        .containerShape(.rect(cornerRadius: 20))
+        .glassEffect(.clear.tint(.gray.opacity(0.4)).interactive(), in: .rect(cornerRadius: 10, style: .continuous))
         .accessibilityElement(children: .ignore)
         .accessibilityLabel(superhero.apodo)
     }

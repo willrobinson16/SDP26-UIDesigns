@@ -29,7 +29,7 @@ struct HeroesView: View {
                             .buttonStyle(.plain)
                         }
                     } header: {
-                        Text(favoritesFilter ? "Favoritos" : "Todos")
+                        Text(favoritesFilter ? "Favoritos" : "")
                     }
                 }
                 .padding()
@@ -44,7 +44,7 @@ struct HeroesView: View {
             .toolbar {
         
                 ToolbarItem(placement: .topBarTrailing) {
-                    Menu("Filtros", systemImage: "line.3.horizontal") {
+                    Menu("Filtros", systemImage: "line.3.horizontal.decrease") {
                         /// TODO - Añadir más filtros
                         Button("Favoritos") {
                             favoritesFilter = true
